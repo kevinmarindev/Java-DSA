@@ -13,8 +13,11 @@ public class Tree {
 
     Node root;
 
-    public Tree(){
+    public Tree(int [] values){
         root = null;
+        for (int value : values) {
+            insert(value);
+        }
     }
 
 
@@ -65,10 +68,10 @@ public class Tree {
         if(currentNode == null) return;
         printInOrder(currentNode.left);
         System.out.println(currentNode.val + " ");
-
+        printInOrder(currentNode.right);
     }
 
-    // Pre-order: root, left, right
+    // Pre order: root, left, right
     public void printPreOrder(Node currentNode) {
         if (currentNode == null) return;
         System.out.println(currentNode.val + " ");
@@ -76,7 +79,7 @@ public class Tree {
         printPreOrder(currentNode.right);
     }
 
-    // Post-order: left, right, root
+    // Post order: left, right, root
     public void printPostOrder(Node currentNode) {
         if (currentNode == null) return;
         printPostOrder(currentNode.left);
@@ -84,18 +87,4 @@ public class Tree {
         System.out.println(currentNode.val + " ");
     }
 
-    public static void main(String [] args){
-        Tree tree = new Tree();
-        tree.insert(20);
-        tree.insert(6);
-        tree.insert(4);
-        tree.insert(25);
-        tree.insert(10);
-        tree.insert(30);
-        tree.insert(22);
-        tree.insert(5);
-
-        System.out.println("seraching for 2");
-        tree.find(56);
-    }
 }
